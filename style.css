@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Baloo 2', cursive;
+  background-color: #003366;
+  overflow: hidden;
+  color: white;
+  text-align: center;
+  height: 100vh;
+}
+
+.background-overlay {
+  background: url('https://wallpaper.forfun.com/fetch/87/87e3783c887d9e20fd4deb2adfaa8174.jpeg') no-repeat center center;
+  background-size: cover;
+  filter: brightness(0.5);
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  z-index: -1;
+}
+
+canvas#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.start-screen, .invitation {
+  background-color: rgba(255, 255, 255, 0.9);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.3);
+  max-width: 600px;
+  margin: auto;
+  position: relative;
+  top: 10vh;
+  z-index: 2;
+  color: #333;
+  animation: fadeIn 1s ease forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+.btn-open, .btn-confirm {
+  background: linear-gradient(45deg, #ff4444, #ff8800);
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 20px;
+  font-size: 1.2rem;
+  color: white;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  display: inline-block;
+  text-decoration: none;
+  animation: pulse 2s infinite;
+}
+
+.btn-open:hover, .btn-confirm:hover {
+  transform: scale(1.1);
+  background: linear-gradient(45deg, #ff8800, #ff4444);
+}
+
+.start-character {
+  width: 140px;
+  animation: float 3s ease-in-out infinite;
+  margin-bottom: 1rem;
+}
+
+.side-character {
+  width: 90px;
+  position: absolute;
+  top: 0;
+  animation: bounce 3s infinite;
+  z-index: 1;
+}
+
+.left {
+  left: -50px;
+}
+
+.right {
+  right: -50px;
+}
+
+.character-wrapper {
+  position: relative;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.details {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+}
+
+.name, .age {
+  color: #ff4444;
+  font-size: 1.4rem;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(255, 68, 68, 0.6); }
+  50% { box-shadow: 0 0 0 15px rgba(255, 68, 68, 0); }
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .start-character,
+  .side-character {
+    width: 70px;
+  }
+
+  .start-screen, .invitation {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+
+  p, li {
+    font-size: 1rem;
+  }
+}

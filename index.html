@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🎈 Convite do Lorenzo 🐾</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Fundo animado -->
+    <div class="background-overlay"></div>
+
+    <!-- Tela de abertura -->
+    <div class="start-screen" id="startScreen">
+      <img
+        src="https://i.pinimg.com/originals/2f/9a/8c/2f9a8c5904a952a106865b2a6c61d9ef.gif"
+        alt="Chase"
+        class="start-character"
+      />
+      <h2>Olá! A Patrulha Canina tem uma missão especial para você...</h2>
+      <button onclick="abrirConvite()" class="btn-open">
+        🚨 Clique aqui para abrir o convite!
+      </button>
+    </div>
+
+    <!-- Convite -->
+    <div class="invitation hidden" id="invitation">
+      <div class="character-wrapper">
+        <img
+          src="https://mundodoconvitedigital.com/patrulha-canina-rhavy-lucca/videos/d2c1920ebe5af0a09291bf97a9979146.gif"
+          alt="Marshall"
+          class="side-character left"
+        />
+        <img
+          src="https://i.pinimg.com/originals/2f/9a/8c/2f9a8c5904a952a106865b2a6c61d9ef.gif"
+          alt="Skye"
+          class="side-character right"
+        />
+      </div>
+
+      <h1>🎉 Você está convidado!</h1>
+      <p>
+        <strong
+          >O nosso herói <span class="name">Lorenzo</span> vai completar
+          <span class="age">5 anos!</span></strong
+        >
+      </p>
+      <p>
+        Venha se divertir com a Patrulha Canina em uma festa cheia de aventura!
+      </p>
+
+      <ul class="details">
+        <li>📅 <strong>Data:</strong> 20 de Setembro de 2025</li>
+        <li>⏰ <strong>Hora:</strong> 16h</li>
+        <li>📍 <strong>Local:</strong> Rua da Alegria, 123</li>
+      </ul>
+
+      <a
+        href="https://wa.me/5531912345678?text=Olá!%20Estou%20confirmando%20minha%20presença%20no%20aniversário%20do%20Lorenzo!%20🐾"
+        class="btn-confirm"
+        target="_blank"
+      >
+        ✅ Confirmar Presença via WhatsApp
+      </a>
+    </div>
+
+    <audio id="bg-music" loop>
+      <source src="https://files.catbox.moe/mk6z9p.mp3" type="audio/mpeg" />
+      Seu navegador não suporta áudio.
+    </audio>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
