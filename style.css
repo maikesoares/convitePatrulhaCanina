@@ -1,14 +1,29 @@
+/* Reset e base */
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  padding: 0 .5rem;
+  padding: 0 1rem;
   font-family: 'Baloo 2', cursive;
   background: linear-gradient(180deg, #007BFF, #003366);
   overflow-x: hidden;
   color: white;
   text-align: center;
-  height: 100vh;
+
+  /* Flex para centralizar o conteúdo vertical e horizontal */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Para que a altura seja pelo menos da viewport e deixe rolar */
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
+/* Fundo */
 .background-overlay {
   background: url('https://wallpaper.forfun.com/fetch/87/87e3783c887d9e20fd4deb2adfaa8174.jpeg') no-repeat center center;
   background-size: cover;
@@ -17,56 +32,64 @@ body {
   top: 0; left: 0;
   width: 100vw; height: 100vh;
   z-index: -1;
-  opacity: .8;
+  opacity: 0.8;
 }
 
+/* Containers principais com fundo semi-transparente */
 .start-screen, .invitation {
   position: relative;
-  padding: 2rem;
+  background: rgba(255, 255, 255, 0.85);
   border-radius: 25px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.4);
   max-width: 650px;
-  margin: auto;
-  top: 10vh;
-  z-index: 2;
+  width: 100%;
+  padding: 2rem 2.5rem;
   color: #222;
-  animation: fadeInUp 0.8s ease forwards;
-  background: url("https://cdn.awsli.com.br/761/761999/produto/1529477149de31fa772.jpg") 
-              no-repeat center;
-  background-size: conver;
+  z-index: 2;
+
+  /* Para garantir centralização dentro do container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Camada branca por trás do conteúdo */
 .start-screen::before, .invitation::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.822);
   border-radius: 25px;
   z-index: 0;
+  pointer-events: none; /* não interfere em cliques */
 }
 
+/* Z-index para o conteúdo ficar acima */
 .start-screen > *, .invitation > * {
   position: relative;
   z-index: 1;
 }
 
+.hidden {
+  display: none;
+}
 
-.hidden { display: none; }
-
+/* Botões */
 .btn-open, .btn-confirm {
   background: linear-gradient(45deg, #FFD700, #FF6347);
   border: none;
-  padding: .5rem 2rem;
+  padding: 0.7rem 2.5rem;
   border-radius: 30px;
   font-size: 1.3rem;
   color: white;
   cursor: pointer;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   transition: all 0.3s ease;
-  text-decoration: none;
   font-weight: bold;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  display: inline-block;
+  max-width: 100%;
 }
 
 .btn-open::after, .btn-confirm::after {
@@ -84,30 +107,54 @@ body {
 }
 
 .btn-open:hover, .btn-confirm:hover {
-  transform: scale(1.08);
+  transform: scale(1.1);
 }
 
+/* Imagem principal na tela inicial */
 .start-character {
-  width: 17rem;
+  width: 220px;
+  max-width: 90vw;
   animation: float 3s ease-in-out infinite;
   margin-bottom: 2rem;
 }
 
-.side-character {
-  width: 140px;
-  position: absolute;
-  top: 10px;
-  animation: bounce 3s infinite;
-  z-index: 1;
-}
-
-.left { left: -60px; }
-.right { right: -60px; }
-
+/* Personagens laterais no convite */
 .character-wrapper {
   position: relative;
-  height: 120px;
+  height: 130px;
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.side-character {
+  width: 120px;
+  max-width: 30vw;
+  animation: bounce 3s infinite;
+  z-index: 1;
+  position: relative; /* tirar absolute para não sair do fluxo */
+}
+
+/* Textos */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 0.7rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.2rem;
+}
+
+p {
+  font-size: 1.1rem;
   margin-bottom: 1rem;
+  line-height: 1.4;
 }
 
 .details {
@@ -115,6 +162,14 @@ body {
   padding: 0;
   margin-top: 1rem;
   font-size: 1.2rem;
+  text-align: left;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.details li {
+  margin-bottom: 0.5rem;
 }
 
 .name, .age {
@@ -140,18 +195,40 @@ body {
 
 /* Mobile */
 @media (max-width: 600px) {
+  body {
+    padding: 1rem 1rem 2rem;
+  }
   .start-character {
-    width: 50%;
+    width: 90vw;
   }
   .side-character {
-    width: 36%;
+    width: 25vw;
   }
-  .left { left: -20px; }
-  .right { right: -20px; }
+  .character-wrapper {
+    height: auto;
+    padding: 0;
+    justify-content: center;
+    gap: 20px;
+  }
   .start-screen, .invitation {
-    padding: 1rem;
-    width: 92%;
+    padding: 1.5rem 1.5rem;
+    border-radius: 20px;
   }
-  h1 { font-size: 1.6rem; }
-  p, li { font-size: 1rem; }
+  h1 {
+    font-size: 1.6rem;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+  p, li {
+    font-size: 1rem;
+  }
+  .details {
+    max-width: 100%;
+    text-align: center;
+  }
+  .btn-open, .btn-confirm {
+    font-size: 1.1rem;
+    padding: 0.7rem 2rem;
+  }
 }
